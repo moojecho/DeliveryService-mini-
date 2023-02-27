@@ -3,10 +3,10 @@ import styled from "styled-components";
 const StoreInfo = () => {
   return (
     <StoreInfoLayout>
-      <StoreButtonLayout>
+      <FiratStoreButtonLayout>
         <AllStoreInfo />
         <DeliveryButton />
-      </StoreButtonLayout>
+      </FiratStoreButtonLayout>
       <StoreButtonLayout>
         <NotDeliveryLayout>
           <NotDeliveryButton />
@@ -15,7 +15,8 @@ const StoreInfo = () => {
         <LastOrderStore />
       </StoreButtonLayout>
       <StoreButtonLayout>
-        <AllStoreInfo />
+        <NewStoreOrCafe />
+        <NewStoreOrCafe />
       </StoreButtonLayout>
     </StoreInfoLayout>
   );
@@ -31,12 +32,20 @@ const StoreInfoLayout = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0 0px 0.5px gray;
+  padding-bottom: 30px;
 `;
 
 const StoreButtonLayout = styled.div`
   width: 340px;
-  height: 165px;
-  border: 1px solid blue;
+  height: 156px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+`;
+const FiratStoreButtonLayout = styled.div`
+  width: 340px;
+  height: 121px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,6 +89,14 @@ const NotDeliveryButton = styled.div`
   height: 73px;
   border-radius: 25px;
   box-shadow: 0px 0px 2px gray;
+  margin: auto;
+`;
+
+const NewStoreOrCafe = styled.div`
+  width: 155px;
+  height: 156px;
+  box-shadow: 0px 0px 2px gray;
+  border-radius: 25px;
   margin: auto;
 `;
 

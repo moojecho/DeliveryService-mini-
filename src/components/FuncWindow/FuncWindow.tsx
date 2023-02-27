@@ -15,7 +15,6 @@ const FuncWindow = () => {
 const FuncWindowLayout = styled.div`
   width: 390px;
   height: 658px;
-  background-color: blue;
   border-bottom: none;
   display: flex;
   flex-direction:column;
