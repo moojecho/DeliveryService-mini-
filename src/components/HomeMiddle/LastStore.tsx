@@ -3,7 +3,6 @@ import styled from "styled-components";
 import * as allTypes from "./type";
 
 const LastStore = ({ lastOrder }: { lastOrder: allTypes.lastOrderType }) => {
-  
   return (
     <LastOrderStore lastOrder={lastOrder[0].properties.img.example}>
       <ButtonTitleWhite>최근 주문 매장</ButtonTitleWhite>

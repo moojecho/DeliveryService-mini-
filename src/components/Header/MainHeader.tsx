@@ -1,16 +1,13 @@
-import { useEffect } from "react";
-import {useAppSelector} from "../../redux/hooks";
 import styled from "styled-components";
 
-import {StatusWindow,Location} from './index'
-import {__homeOrMenuInfo} from "../../redux/modules/CodeTestSlice";
+import { StatusWindow, Location } from "./index";
+import { __homeOrMenuInfo } from "../../redux/modules/CodeTestSlice";
 
 const MainHeader = () => {
-
   return (
     <HeaderLayout>
-      <StatusWindow/>
-      <Location/>
+      <StatusWindow />
+      <Location />
     </HeaderLayout>
   );
 };
@@ -20,7 +17,7 @@ const HeaderLayout = styled.div`
   height: 94px;
   background-color: white;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   position: relative;
   z-index: 15;

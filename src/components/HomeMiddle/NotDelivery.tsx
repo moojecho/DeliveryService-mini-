@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { home_takeout_menu, home_store_menu } from "../../static/index";
 
 const NotDelivery = () => {
-  
   return (
     <NotDeliveryLayout>
       <NotDeliveryButton>

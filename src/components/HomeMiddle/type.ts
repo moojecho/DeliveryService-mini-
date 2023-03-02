@@ -57,7 +57,7 @@ export type lastOrderType = [
       };
     };
   }
-]
+];
 
 export type newStoreType = [
   {

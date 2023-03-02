@@ -18,6 +18,12 @@ import point_chevron_right from './image/point_chevron_right.svg';
 import search_bottomtab from './image/search_bottomtab.svg';
 import store from './image/store.svg';
 import add from './image/Add.png';
+import accrualDetails from './image/AccrualDetails.png';
+import smile from './image/Smile.png';
+import share from './image/share.png';
+import search from './image/Search.png';
+import phone from './image/phone.png';
+import accural from './image/Accural.png';
 export {addpoint_bottomtab,
     address_pin,
     cake,
@@ -37,5 +43,11 @@ export {addpoint_bottomtab,
     point_chevron_right,
     search_bottomtab,
     store,
-    add
+    add,
+    accrualDetails,
+    smile,
+    share,
+    search,
+    phone,
+    accural
 }

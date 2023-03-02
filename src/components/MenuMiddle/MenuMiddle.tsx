@@ -12,7 +12,6 @@ const MenuMiddle = () => {
   useEffect(() => {
     dispatch(__homeOrMenuInfo());
   }, []);
-  console.log(menuList);
 
   return (
     <FuncWindowLayout>

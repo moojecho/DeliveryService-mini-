@@ -7,7 +7,7 @@ const MenuFooter = () => {
         <CartList>장바구니 보기</CartList>
         <CartListQuantity>1</CartListQuantity>
       </CartLayout>
-      <IphoneBar/>
+      <IphoneBar />
     </FooterLayout>
   );
 };
@@ -48,10 +48,10 @@ const CartListQuantity = styled(CenterLayout)`
   margin: 4px 0 0 0;
 `;
 const IphoneBar = styled(CenterLayout)`
-width: 134px;
-height: 5px;
-border-radius: 15px;
-background-color: white;
-margin-top:40px;
+  width: 134px;
+  height: 5px;
+  border-radius: 15px;
+  background-color: white;
+  margin-top: 40px;
 `;
 export default MenuFooter;

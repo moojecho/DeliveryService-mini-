@@ -1,41 +1,42 @@
 import styled from "styled-components";
 
 import {
-  history_bottomtab,
-  addpoint_bottomtab,
-  search_bottomtab,
-  mypage_bottomtab,
-  home_bottomtab
+  home_bottomtab,
+  accrualDetails,
+  accural,
+  search,
+  smile,
 } from "../../static/index";
 
 const Footer = () => {
   return (
     <FooterLayout>
       <HomeButton>
-        <HomeButtonImage src={home_bottomtab}/>
+        <HomeButtonImage src={home_bottomtab} />
       </HomeButton>
       <ButtonLayout>
         <AccrualLayout>
           <DetailsButton>
-            <Detailsimage src={history_bottomtab}></Detailsimage>
+            <Detailsimage src={accrualDetails}></Detailsimage>
             적립내역
           </DetailsButton>
           <DetailsButton>
-            <Detailsimage src={addpoint_bottomtab}></Detailsimage>
+            <Detailsimage src={accural}></Detailsimage>
             적립
           </DetailsButton>
         </AccrualLayout>
         <SearchOrMyInfoLayout>
           <DetailsButton>
-            <Detailsimage src={search_bottomtab}></Detailsimage>
+            <Detailsimage src={search}></Detailsimage>
             검색
           </DetailsButton>
           <DetailsButton>
-            <Detailsimage src={mypage_bottomtab}></Detailsimage>
+            <Detailsimage src={smile}></Detailsimage>
             MY
           </DetailsButton>
         </SearchOrMyInfoLayout>
       </ButtonLayout>
+      <IphoneBar />
     </FooterLayout>
   );
 };
@@ -95,6 +96,7 @@ const Detailsimage = styled.img`
   width: 30px;
   height: 30px;
   margin: auto;
+  opacity: 0.1;
   cursor: pointer;
 `;
 
@@ -104,5 +106,16 @@ const SearchOrMyInfoLayout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const IphoneBar = styled.div`
+  width: 134px;
+  height: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: black;
+  margin-top: 30px;
 `;
 export default Footer;

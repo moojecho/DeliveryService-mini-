@@ -1,8 +1,18 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { heart } from "../../static/index";
 
 const EventToggle = () => {
+  const [modeToggle, setModeToggle] = useState(true);
+
+  const toggle = () => {
+    if (modeToggle) {
+      setModeToggle(false);
+    } else {
+      setModeToggle(true);
+    }
+  };
   return (
     <EventToggleLayout>
       <EventLayout>
@@ -11,8 +21,8 @@ const EventToggle = () => {
       </EventLayout>
       <ToggleLayout>
         간단히 보기
-        <ToggleBackground />
-        <ToggleSwitch />
+        <ToggleBackground modeToggle={modeToggle} />
+        <ToggleSwitch onClick={toggle} modeToggle={modeToggle} />
       </ToggleLayout>
     </EventToggleLayout>
   );
@@ -54,14 +64,15 @@ const ToggleLayout = styled.div`
   color: #cecece;
   margin-left: 10px;
 `;
-const ToggleBackground = styled.div`
+const ToggleBackground = styled.div<{ modeToggle: boolean }>`
   width: 29px;
   height: 16px;
-  background-color: #f5f5f5;
+  transition: all 0.7s ease-in-out;
+  background-color: ${(props) => (props.modeToggle ? "#f5f5f5" : "#f95f53")};
   border-radius: 10px;
   margin-left: 10px;
 `;
-const ToggleSwitch = styled.div`
+const ToggleSwitch = styled.div<{ modeToggle: boolean }>`
   width: 14px;
   height: 14px;
   background-color: white;
@@ -70,6 +81,8 @@ const ToggleSwitch = styled.div`
   z-index: 15;
   margin: 0 0 0 45px;
   box-shadow: 0px 0px 3px black;
+  transition: all 0.7s ease-in-out;
+  transform: ${(props) => (props.modeToggle ? null : " translateX(15px)")};
 `;
 
 export default EventToggle;

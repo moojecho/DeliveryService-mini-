@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import * as stateTypes from "../type"; 
+import * as stateTypes from "../type";
 
 const initialState: stateTypes.homeOrMenuProps = {
   home: {
@@ -53,69 +53,69 @@ const initialState: stateTypes.homeOrMenuProps = {
       menu_group_info: {
         properties: {
           description: {
-            description: '',
-            example: ''
+            description: "",
+            example: "",
           },
           menu_info: {
             items: {
               properties: {
                 description: {
-                  description: '',
-                  example: ''
+                  description: "",
+                  example: "",
                 },
                 img: {
-                  description: '',
-                  example: ''
+                  description: "",
+                  example: "",
                 },
                 name: {
-                  description: '',
-                  example: ''
+                  description: "",
+                  example: "",
                 },
                 price: {
-                  description: '',
+                  description: "",
                   items: {
                     properties: {
-                      name: { description: '', example: '' },
-                      price: { description: '', example: 0 }
-                    }
-                  }
+                      name: { description: "", example: "" },
+                      price: { description: "", example: 0 },
+                    },
+                  },
                 },
-                sold_out:{
-                  description:'',
-                  example:false
-                }
-              }
-            }
+                sold_out: {
+                  description: "",
+                  example: false,
+                },
+              },
+            },
           },
-          name: { description: '', example: '' },
-          sort: { description: '', example: 0 }
-        }
+          name: { description: "", example: "" },
+          sort: { description: "", example: 0 },
+        },
       },
       store_info: {
         properties: {
           delivery_fee: {
-            description: '',
-            example: 0
+            description: "",
+            example: 0,
           },
           min_price: {
-            description: '',
-            example: 0
+            description: "",
+            example: 0,
           },
           name: {
-            description: '',
-            example: '',
+            description: "",
+            example: "",
           },
           point: {
-            description: '',
-            example: 0
-          }
-        }
-      }
-    }
+            description: "",
+            example: 0,
+          },
+        },
+      },
+    },
   },
-  menuInfoButtonToggle:{
-    toggle:false
-  }
+  menuInfoButtonToggle: {
+    toggle: false,
+  },
 };
 
 export const __homeOrMenuInfo: any = createAsyncThunk(
@@ -131,14 +131,18 @@ export const CodeTestSlice = createSlice({
   initialState,
   reducers: {
     changeToggle: (state, action: PayloadAction<boolean>) => {
-    state.menuInfoButtonToggle = {...state.menuInfoButtonToggle,toggle:!action.payload};
-  },},
+      state.menuInfoButtonToggle = {
+        ...state.menuInfoButtonToggle,
+        toggle: !action.payload,
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(__homeOrMenuInfo.fulfilled, (state, action) => {
       state.home = action.payload.definitions.Home;
       state.menu = action.payload.definitions.Menu;
-    })
+    });
   },
 });
-export const {changeToggle} = CodeTestSlice.actions;
+export const { changeToggle } = CodeTestSlice.actions;
 export default CodeTestSlice.reducer;

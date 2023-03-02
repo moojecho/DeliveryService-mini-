@@ -4,7 +4,6 @@ import * as allTypes from "./type";
 import { add, cake } from "../../static/index";
 
 const NewStoreOrCafe = ({ newStore }: { newStore: allTypes.newStoreType }) => {
-  
   return (
     <StoreButtonLayout>
       <NewStoreButton>

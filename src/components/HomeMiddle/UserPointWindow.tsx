@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../../redux/hooks";
 import { __homeOrMenuInfo } from "../../redux/modules/CodeTestSlice";
@@ -6,10 +7,13 @@ import * as allTypes from "./type";
 import { EventToggle } from "./index";
 
 const UserPointWindow = () => {
-  const homeData: allTypes.homeInfoProps = useAppSelector((state: any) => state.codeTest);
-  
+  const homeData: allTypes.homeInfoProps = useAppSelector(
+    (state: any) => state.codeTest
+  );
+
   const point: number = homeData.home.properties.point.example;
-  const nickName: string = homeData.home.properties.grade.properties.name.example;
+  const nickName: string =
+    homeData.home.properties.grade.properties.name.example;
   const userImg: string = homeData.home.properties.grade.properties.img.example;
 
   return (

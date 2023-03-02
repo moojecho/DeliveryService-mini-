@@ -109,7 +109,7 @@ export type homeOrMenuProps = {
     };
   };
 
-  menuInfoButtonToggle:{
-    toggle:boolean;
+  menuInfoButtonToggle: {
+    toggle: boolean;
   };
 };

@@ -4,23 +4,29 @@ import styled from "styled-components";
 import * as storeTypes from "../../redux/type";
 import { home, menu, point_chevron_right } from "../../static/index";
 
-const OrderHeadInfo = ({StoreInfo}:{StoreInfo:storeTypes.homeOrMenuProps}) => {
+const OrderHeadInfo = ({
+  StoreInfo,
+}: {
+  StoreInfo: storeTypes.homeOrMenuProps;
+}) => {
   const navigate = useNavigate();
 
-  const storeName = StoreInfo.menu.properties.store_info.properties.name.example;
-  const storePoint = StoreInfo.menu.properties.store_info.properties.point.example;
+  const storeName =
+    StoreInfo.menu.properties.store_info.properties.name.example;
+  const storePoint =
+    StoreInfo.menu.properties.store_info.properties.point.example;
 
   return (
     <HeadInfoLayout>
       <TopButtonLayout>
-        <HomeOrMenuButton name={home} onClick={()=>navigate('/')} />
+        <HomeOrMenuButton name={home} onClick={() => navigate("/")} />
         <HomeOrMenuButton name={menu} />
       </TopButtonLayout>
       <NameOrPointLayout>
         <StoreName>{storeName}</StoreName>
         <UserPoint>
-          보유포인트 <Point>{storePoint.toLocaleString()}P</Point>  
-          <ArrowImage src={point_chevron_right}/>
+          보유포인트 <Point>{storePoint.toLocaleString()}P</Point>
+          <ArrowImage src={point_chevron_right} />
         </UserPoint>
       </NameOrPointLayout>
     </HeadInfoLayout>
@@ -73,7 +79,7 @@ const UserPoint = styled(CenterLayout)`
   width: 150px;
   height: 20px;
   font-size: 12px;
- margin-top: 10px;
+  margin-top: 10px;
   color: #f95f53;
 `;
 const Point = styled.span`

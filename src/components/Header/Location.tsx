@@ -1,16 +1,15 @@
-import React from "react";
 import styled from "styled-components";
 
-import { address_pin,chevron_right } from "../../static/index";
+import { address_pin, chevron_right } from "../../static/index";
 
 const Location = () => {
   return (
     <LocationLayout>
       <RealTimeLocation>
-        <PinImage src={address_pin}/>
+        <PinImage src={address_pin} />
         {`금천구 디지털로 173`}
-        <ArrowImage src={chevron_right}/>
-        </RealTimeLocation>
+        <ArrowImage src={chevron_right} />
+      </RealTimeLocation>
     </LocationLayout>
   );
 };
@@ -41,8 +40,8 @@ const PinImage = styled.img`
 `;
 
 const ArrowImage = styled.img`
-width: 7px;
-height: 10px;
-margin: 4px 0 0 5px;
+  width: 7px;
+  height: 10px;
+  margin: 4px 0 0 5px;
 `;
 export default Location;

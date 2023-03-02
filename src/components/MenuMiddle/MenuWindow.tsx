@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import * as menuTypes from "../../redux/type";
@@ -6,9 +6,8 @@ import { chevron_down, home_delivery_menu } from "../../static/index";
 
 const MenuWindow = ({ menu }: { menu: menuTypes.homeOrMenuProps }) => {
   const [menuToggle, setMenuToggle] = useState(true);
-  const slideCurrent = useRef<HTMLInputElement>(null);
-  const slideCurrent2 = useRef<HTMLInputElement>(null);
-  const slideCurrent3 = useRef<HTMLInputElement>(null);
+  const [topMenu, setTopMenu] = useState(1);
+
   const menuInfoBtnToggle = menu.menuInfoButtonToggle.toggle;
   const menuList = [menu.menu.properties.menu_group_info.properties];
 
@@ -20,23 +19,6 @@ const MenuWindow = ({ menu }: { menu: menuTypes.homeOrMenuProps }) => {
     }
   };
 
-  const distanceChildFromTop = () => {
-    let chTop = slideCurrent3.current?.getBoundingClientRect().top;
-    let peTop = slideCurrent.current?.getBoundingClientRect().top;
-    if(chTop && peTop){
-       console.log("부모요소와의 거리(각 요소의  TOP),", chTop - peTop);
-    }
-  };
-  console.log(slideCurrent);
-  console.log(slideCurrent2, "slideCurrent2");
-  console.log(slideCurrent3, "slideCurrent3");
-  
-
-  useEffect(()=>{
-    window.addEventListener("scroll", distanceChildFromTop);
-    console.log(slideCurrent3.current?.getBoundingClientRect().top);
-    console.log(slideCurrent3.current?.offsetTop)
-  },[slideCurrent.current?.scrollTop])
   return (
     <WindowLayout>
       {menuInfoBtnToggle ? (
@@ -50,49 +32,36 @@ const MenuWindow = ({ menu }: { menu: menuTypes.homeOrMenuProps }) => {
             {menuList.map((list) => {
               return (
                 <SlideMenu key={list.sort.example}>
-                  <SlideMenuName>{list.name.example}</SlideMenuName>
-                  <SlideMenuUnderBar />
+                  <SlideMenuName
+                    topMenuNum={list.sort.example}
+                    topMenu={topMenu}
+                  >
+                    {list.name.example}
+                  </SlideMenuName>
+                  <SlideMenuUnderBar
+                    topMenuNum={list.sort.example}
+                    topMenu={topMenu}
+                  />
                 </SlideMenu>
               );
             })}
             <SlideMenu>
-              <SlideMenuName>{"테스트용메뉴"}</SlideMenuName>
-              <SlideMenuUnderBar />
-            </SlideMenu>
-            <SlideMenu>
-              <SlideMenuName>{"테스트용메뉴"}</SlideMenuName>
-              <SlideMenuUnderBar />
-            </SlideMenu>
-            <SlideMenu>
-              <SlideMenuName>{"테스트용메뉴"}</SlideMenuName>
-              <SlideMenuUnderBar />
-            </SlideMenu>
-            <SlideMenu>
-              <SlideMenuName>{"테스트용메뉴"}</SlideMenuName>
-              <SlideMenuUnderBar />
-            </SlideMenu>
-            <SlideMenu>
-              <SlideMenuName>{"테스트용메뉴"}</SlideMenuName>
-              <SlideMenuUnderBar />
-            </SlideMenu>
-            <SlideMenu>
-              <SlideMenuName>{"테스트용메뉴"}</SlideMenuName>
-              <SlideMenuUnderBar />
+              <SlideMenuName topMenuNum={2} topMenu={topMenu}>
+                {"테스트용메뉴"}
+              </SlideMenuName>
+              <SlideMenuUnderBar topMenuNum={2} topMenu={topMenu} />
             </SlideMenu>
           </MenuSlideLayout>
 
           <MenuLayout>
             {menuList.map((list) => {
               return (
-                <MenuGroupLayout ref={slideCurrent} key={list.sort.example}>
-                  <MenuTitleLayout ref={slideCurrent2}>
-                    <MenuListTitle >
-                      {list.name.example}{" "}
-                    </MenuListTitle>
+                <MenuGroupLayout key={list.sort.example}>
+                  <MenuTitleLayout onClick={changToggle}>
+                    <MenuListTitle>{list.name.example} </MenuListTitle>
                     <MenuToggleLayout>
                       <MenuToggleArrow
                         menuToggle={menuToggle}
-                        onClick={changToggle}
                         src={chevron_down}
                       />
                     </MenuToggleLayout>
@@ -133,56 +102,6 @@ const MenuWindow = ({ menu }: { menu: menuTypes.homeOrMenuProps }) => {
                 </MenuGroupLayout>
               );
             })}
-            <MenuTitleLayout>
-              <MenuListTitle >테스트용 메뉴 </MenuListTitle>
-              <MenuToggleLayout>
-                <MenuToggleArrow
-                  menuToggle={menuToggle}
-                  onClick={changToggle}
-                  src={chevron_down}
-                />
-              </MenuToggleLayout>
-            </MenuTitleLayout>
-            <MenuTitleLayout>
-              <MenuListTitle >테스트용 메뉴 </MenuListTitle>
-              <MenuToggleLayout>
-                <MenuToggleArrow
-                  menuToggle={menuToggle}
-                  onClick={changToggle}
-                  src={chevron_down}
-                />
-              </MenuToggleLayout>
-            </MenuTitleLayout>
-            <MenuTitleLayout>
-              <MenuListTitle>테스트용 메뉴 </MenuListTitle>
-              <MenuToggleLayout>
-                <MenuToggleArrow
-                  menuToggle={menuToggle}
-                  onClick={changToggle}
-                  src={chevron_down}
-                />
-              </MenuToggleLayout>
-            </MenuTitleLayout>
-            <MenuTitleLayout ref={slideCurrent3}>
-              <MenuListTitle >여기 좌표 구함 </MenuListTitle>
-              <MenuToggleLayout>
-                <MenuToggleArrow
-                  menuToggle={menuToggle}
-                  onClick={changToggle}
-                  src={chevron_down}
-                />
-              </MenuToggleLayout>
-            </MenuTitleLayout>
-            <MenuTitleLayout>
-              <MenuListTitle>테스트용 메뉴 </MenuListTitle>
-              <MenuToggleLayout>
-                <MenuToggleArrow
-                  menuToggle={menuToggle}
-                  onClick={changToggle}
-                  src={chevron_down}
-                />
-              </MenuToggleLayout>
-            </MenuTitleLayout>
           </MenuLayout>
         </>
       )}
@@ -224,16 +143,23 @@ const SlideMenu = styled(CenterLayout)`
   height: 55px;
   flex-direction: column;
   margin: 0 0 0 40px;
+  cursor: pointer;
 `;
-const SlideMenuName = styled(CenterLayout)`
+const SlideMenuName = styled(CenterLayout)<{
+  topMenuNum: number;
+  topMenu: number;
+}>`
   height: 52px;
   font-size: 12px;
   font-family: NotoSanskr-Bold;
+  color: ${(props) =>
+    props.topMenuNum === props.topMenu ? "#3f3f3f" : "#9e9e9e"};
 `;
-const SlideMenuUnderBar = styled.div`
+const SlideMenuUnderBar = styled.div<{ topMenuNum: number; topMenu: number }>`
   width: 100%;
   height: 3px;
-  background-color: #3f3f3f;
+  background-color: ${(props) =>
+    props.topMenuNum === props.topMenu ? "#3f3f3f" : "white"};
 `;
 
 const MenuGroupLayout = styled(CenterLayout)`

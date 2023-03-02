@@ -1,9 +1,9 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {__homeOrMenuInfo} from "../../redux/modules/CodeTestSlice";
-import * as allTypes from "./type";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
+import { __homeOrMenuInfo } from "../../redux/modules/CodeTestSlice";
+import * as allTypes from "./type";
 import {
   NotDelivery,
   AllStoreOrDelivery,
@@ -14,16 +14,18 @@ import {
 const StoreInfo = () => {
   const dispatch = useAppDispatch();
 
-  const homeData = useAppSelector((state:any)=> state.codeTest)
-  const lastOrder:allTypes.lastOrderType = [homeData.home.properties.last_store];
-  const newStore:allTypes.newStoreType = [homeData.home.properties.new_store_list.items];
+  const homeData = useAppSelector((state: any) => state.codeTest);
+  const lastOrder: allTypes.lastOrderType = [
+    homeData.home.properties.last_store,
+  ];
+  const newStore: allTypes.newStoreType = [
+    homeData.home.properties.new_store_list.items,
+  ];
 
-  console.log(homeData);
-
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(__homeOrMenuInfo());
-  },[])
-  
+  }, []);
+
   return (
     <StoreInfoLayout>
       <AllStoreOrDelivery />
