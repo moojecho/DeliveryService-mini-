@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
+import * as storeTypes from "../../redux/type";
 import { home, menu, point_chevron_right } from "../../static/index";
 
-const HeadInfo = () => {
+const OrderHeadInfo = ({StoreInfo}:{StoreInfo:storeTypes.homeOrMenuProps}) => {
   const navigate = useNavigate();
+
+  const storeName = StoreInfo.menu.properties.store_info.properties.name.example;
+  const storePoint = StoreInfo.menu.properties.store_info.properties.point.example;
 
   return (
     <HeadInfoLayout>
@@ -13,9 +17,9 @@ const HeadInfo = () => {
         <HomeOrMenuButton name={menu} />
       </TopButtonLayout>
       <NameOrPointLayout>
-        <StoreName>서오릉카페 구로점</StoreName>
+        <StoreName>{storeName}</StoreName>
         <UserPoint>
-          보유포인트 <Point>9700P</Point>  
+          보유포인트 <Point>{storePoint.toLocaleString()}P</Point>  
           <ArrowImage src={point_chevron_right}/>
         </UserPoint>
       </NameOrPointLayout>
@@ -82,4 +86,4 @@ const ArrowImage = styled.img`
   height: 13px;
   margin: 0 0 -2px 3px;
 `;
-export default HeadInfo;
+export default OrderHeadInfo;

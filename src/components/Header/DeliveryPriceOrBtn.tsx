@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
+import * as storeTypes from "../../redux/type";
 import {
   home,
   menu,
@@ -9,11 +10,13 @@ import {
   menu_chevron_right,
 } from "../../static/index";
 
-const DeliveryPriceOrBtn = () => {
+const DeliveryPriceOrBtn = ({StoreInfo}:{StoreInfo:storeTypes.homeOrMenuProps}) => {
   const navigate = useNavigate();
-
+  
   const [statusToggle , setStatusToggle] = useState('delivery');
-
+  const deliveryFee = StoreInfo.menu.properties.store_info.properties.delivery_fee.example;
+  const minPrice = StoreInfo.menu.properties.store_info.properties.min_price.example;
+    
   const toggle = ()=>{
     if(statusToggle==='delivery'){
       setStatusToggle('takeOut')
@@ -28,12 +31,12 @@ const DeliveryPriceOrBtn = () => {
         <DeliveryPriceLayout>
           <DeliveryPrice>
             <ArrowImage src={menu_chevron_right} />
-            <BoldPrice>배달비</BoldPrice> {"4,000원"}
+            <BoldPrice>배달비</BoldPrice> {deliveryFee.toLocaleString()}원
             <MoreBtn>자세히</MoreBtn>
           </DeliveryPrice>
           <DeliveryPrice>
             <ArrowImage src={menu_chevron_right} />
-            <BoldPrice>최소주문금액</BoldPrice> {"15,000원"}
+            <BoldPrice>최소주문금액</BoldPrice> {minPrice.toLocaleString()}원
           </DeliveryPrice>
         </DeliveryPriceLayout>
         <DeliveryStatus>

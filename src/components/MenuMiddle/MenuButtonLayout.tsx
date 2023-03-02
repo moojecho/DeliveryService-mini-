@@ -1,33 +1,39 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useAppDispatch } from "../../redux/hooks";
+
+import {changeToggle} from "../../redux/modules/CodeTestSlice"
 
 const MenuButtonLayout = () => {
-  const [menuToggle, setMenuToggle] = useState("menu");
+  const dispatch = useAppDispatch();
+  const [menuToggle, setMenuToggle] = useState(true);
 
   const toggle = () => {
-    if (menuToggle === "menu") {
-      setMenuToggle("info");
+    if (menuToggle) {
+      setMenuToggle(false)
+      dispatch(changeToggle(false))
     } else {
-      setMenuToggle("menu");
+      setMenuToggle(true)
+      dispatch(changeToggle(true))
     }
   };
 
   return (
     <MenuWindowLayout>
       <BorderToplayout>
-        <BorderTopColor toggle={"menu"} menuToggle={menuToggle} />
-        <BorderTopColor toggle={"info"} menuToggle={menuToggle} />
+        <BorderTopColor toggle={true} menuToggle={menuToggle} />
+        <BorderTopColor toggle={false} menuToggle={menuToggle} />
       </BorderToplayout>
       <MenuToggleLayout>
         <MenuToggleButton
-          toggle={"menu"}
+          toggle={true}
           menuToggle={menuToggle}
           onClick={toggle}
         >
           메뉴
         </MenuToggleButton>
         <InfoToggleButton
-          toggle={"info"}
+          toggle={false}
           menuToggle={menuToggle}
           onClick={toggle}
         >
@@ -55,7 +61,7 @@ const BorderToplayout = styled.div`
   height: 3px;
   display: flex;
 `;
-const BorderTopColor = styled.div<{toggle: string, menuToggle: string}>`
+const BorderTopColor = styled.div<{toggle: boolean, menuToggle: boolean}>`
   width: 197px;
   height: 3px;
   background-color: ${(props) =>
@@ -67,7 +73,7 @@ const MenuToggleLayout = styled(CenterLayout)`
   width: 390px;
   height: 43px;
 `;
-const InfoToggleButton = styled(CenterLayout)<{toggle: string, menuToggle: string}>`
+const InfoToggleButton = styled(CenterLayout)<{toggle: boolean, menuToggle: boolean}>`
   width: 390px;
   height: 43px;
   border-bottom: ${(props) =>
@@ -75,7 +81,7 @@ const InfoToggleButton = styled(CenterLayout)<{toggle: string, menuToggle: strin
   color: ${(props) =>
     props.toggle === props.menuToggle ? "#f95f53" : "#9e9e9e"};
 `;
-const MenuToggleButton = styled(InfoToggleButton)<{toggle: string, menuToggle: string}>`
+const MenuToggleButton = styled(InfoToggleButton)<{toggle: boolean, menuToggle: boolean}>`
   border-right: 1px solid #cecece;
 `;
 export default MenuButtonLayout;

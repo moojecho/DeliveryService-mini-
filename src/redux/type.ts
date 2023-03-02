@@ -68,40 +68,48 @@ export type homeOrMenuProps = {
                 };
                 price: {
                   description: string;
-                  item: {
+                  items: {
                     properties: {
-                      name: { description: string; example: string },
-                      price: { description: string; example: number }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          name: { description: string; example: string },
-          sort: { description: string; example: number }
-        }
-      },
+                      name: { description: string; example: string };
+                      price: { description: string; example: number };
+                    };
+                  };
+                };
+                sold_out: {
+                  description: string;
+                  example: boolean;
+                };
+              };
+            };
+          };
+          name: { description: string; example: string };
+          sort: { description: string; example: number };
+        };
+      };
       store_info: {
         properties: {
           delivery_fee: {
-            description: string,
-            example: number
-          },
+            description: string;
+            example: number;
+          };
           min_price: {
-            description: string,
-            example: number
-          },
+            description: string;
+            example: number;
+          };
           name: {
-            description: string,
-            example: string
-          },
+            description: string;
+            example: string;
+          };
           point: {
-            description: string,
-            example: number
-          }
-        }
-      }
-    }
+            description: string;
+            example: number;
+          };
+        };
+      };
+    };
+  };
+
+  menuInfoButtonToggle:{
+    toggle:boolean;
   };
 };

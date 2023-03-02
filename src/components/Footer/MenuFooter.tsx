@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-import {
-  history_bottomtab,
-  addpoint_bottomtab,
-  search_bottomtab,
-  mypage_bottomtab,
-  home_bottomtab,
-} from "../../static/index";
-
 const MenuFooter = () => {
   return (
     <FooterLayout>
@@ -15,6 +7,7 @@ const MenuFooter = () => {
         <CartList>장바구니 보기</CartList>
         <CartListQuantity>1</CartListQuantity>
       </CartLayout>
+      <IphoneBar/>
     </FooterLayout>
   );
 };
@@ -33,7 +26,7 @@ const FooterLayout = styled(CenterLayout)`
 const CartLayout = styled(CenterLayout)`
   width: 120px;
   height: 22px;
-  margin-top: -40px;
+  margin-top: 5px;
 `;
 const CartList = styled.p`
   width: 92px;
@@ -54,5 +47,11 @@ const CartListQuantity = styled(CenterLayout)`
   color: #f95f53;
   margin: 4px 0 0 0;
 `;
-
+const IphoneBar = styled(CenterLayout)`
+width: 134px;
+height: 5px;
+border-radius: 15px;
+background-color: white;
+margin-top:40px;
+`;
 export default MenuFooter;

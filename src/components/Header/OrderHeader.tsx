@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-import {StatusWindow,HeadInfo,DeliveryPriceOrBtn} from './index'
+import {  useAppSelector } from "../../redux/hooks";
+import {StatusWindow,OrderHeadInfo,DeliveryPriceOrBtn} from './index'
 
 const OrderHeader = () => {
+  const StoreInfo = useAppSelector((state) => state.codeTest);
   
   return (
     <HeaderLayout>
-      <StatusWindow/>
-      <HeadInfo/>
-      <DeliveryPriceOrBtn/>
+      <StatusWindow />
+      <OrderHeadInfo StoreInfo={StoreInfo}/>
+      <DeliveryPriceOrBtn StoreInfo={StoreInfo}/>
     </HeaderLayout>
   );
 };
