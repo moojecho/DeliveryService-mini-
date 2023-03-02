@@ -1,11 +1,11 @@
 import React from "react";
-import { Header,FuncWindow,Footer } from "../components/index";
+import { MainHeader,HomeMiddle,Footer } from "../components/index";
 
 const MainPage = () => {
   return (
     <div>
-      <Header />
-      <FuncWindow/>
+      <MainHeader />
+      <HomeMiddle/>
       <Footer/>
     </div>
   );

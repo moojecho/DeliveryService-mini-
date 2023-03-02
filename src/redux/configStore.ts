@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import catLoctionMap from "./modules/MapSlice";
+import codeTest from "./modules/CodeTestSlice";
 
 
 const store = configureStore({
-    reducer:{catLoctionMap}
+    reducer:{codeTest}
 });
 
 export type RootState = ReturnType<typeof store.getState>;

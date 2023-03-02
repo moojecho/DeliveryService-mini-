@@ -1,9 +1,16 @@
+import React from "react";
 import styled from "styled-components";
+
+import { address_pin,chevron_right } from "../../static/index";
 
 const Location = () => {
   return (
     <LocationLayout>
-      <RealTimeLocation>{`금천구 디지털로 173  >`}</RealTimeLocation>
+      <RealTimeLocation>
+        <PinImage src={address_pin}/>
+        {`금천구 디지털로 173`}
+        <ArrowImage src={chevron_right}/>
+        </RealTimeLocation>
     </LocationLayout>
   );
 };
@@ -23,7 +30,19 @@ const RealTimeLocation = styled.div`
   color: #9e9e9e;
   display: flex;
   justify-content: center;
-  font-size: 11px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: normal;
+`;
+
+const PinImage = styled.img`
+  width: 8px;
+  height: 12px;
+  margin: 3px 5px 0 0;
+`;
+
+const ArrowImage = styled.img`
+width: 7px;
+height: 10px;
+margin: 4px 0 0 5px;
 `;
 export default Location;
