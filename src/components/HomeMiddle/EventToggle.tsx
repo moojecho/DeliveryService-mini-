@@ -79,10 +79,11 @@ const ToggleSwitch = styled.div<{ modeToggle: boolean }>`
   border-radius: 50%;
   position: absolute;
   z-index: 15;
-  margin: 0 0 0 45px;
+  margin: 0 0 0 48px;
   box-shadow: 0px 0px 3px black;
   transition: all 0.7s ease-in-out;
-  transform: ${(props) => (props.modeToggle ? null : " translateX(15px)")};
+  transform: ${(props) => (props.modeToggle ? null : " translateX(12px)")};
+  cursor: pointer;
 `;
 
 export default EventToggle;

@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 import { store, home_delivery_menu } from "../../static/index";
 
 const AllStoreOrDelivery = () => {
+  const navigate = useNavigate();
+
   return (
     <FiratStoreButtonLayout>
-      <AllStoreInfo>
+      <AllStoreInfo onClick={() => navigate("/menu")}>
         <StoreCommentLayout>
           <ButtonTitleWhite>모든 매장</ButtonTitleWhite>
           <ButtonCommentWhite>
@@ -49,6 +52,7 @@ const AllStoreInfo = styled.div`
   flex-direction: row;
   margin: auto;
   overflow: hidden;
+  cursor: pointer;
 `;
 const StoreCommentLayout = styled.div`
   width: 73px;

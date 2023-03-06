@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 import * as allTypes from "./type";
 
 const LastStore = ({ lastOrder }: { lastOrder: allTypes.lastOrderType }) => {
+  const navigate = useNavigate();
   return (
-    <LastOrderStore lastOrder={lastOrder[0].properties.img.example}>
+    <LastOrderStore
+      onClick={() => navigate("/menu")}
+      lastOrder={lastOrder[0].properties.img.example}>
       <ButtonTitleWhite>최근 주문 매장</ButtonTitleWhite>
       <ButtonCommentFirstWhite>
         {lastOrder[0].properties.name.example}
@@ -29,6 +33,7 @@ const LastOrderStore = styled.div<{ lastOrder: string }>`
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  cursor: pointer;
 `;
 const ButtonTitleWhite = styled.p`
   width: 84px;
